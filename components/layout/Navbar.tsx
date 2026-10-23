@@ -231,63 +231,67 @@ export const Navbar: React.FC<NavbarProps> = ({
                 />
               </button>
 
-              {/* Collections Mega Flyout */}
+              {/* Collections Mega Flyout (100% Solid Luxury Dark Obsidian & Champagne Gold) */}
               {collectionsDropdownOpen && (
                 <div
-                  className="absolute top-full left-1/2 -translate-x-[26%] lg:-translate-x-[28%] mt-3 w-[780px] max-w-[calc(100vw-3rem)] bg-[#141210]/98 backdrop-blur-2xl border border-champagne/60 p-5 sm:p-6 shadow-[0_30px_90px_rgba(0,0,0,0.92)] z-50 spring-btt-in"
-                  style={{ transformOrigin: "top center" }}
+                  className="absolute top-full left-1/2 -translate-x-[26%] lg:-translate-x-[28%] mt-3 w-[870px] max-w-[calc(100vw-2.5rem)] border border-champagne/60 shadow-[0_30px_90px_rgba(0,0,0,0.99),0_0_0_1px_rgba(212,175,55,0.25)] z-50 spring-btt-in overflow-hidden before:absolute before:-top-3.5 before:left-0 before:right-0 before:h-3.5 before:content-['']"
+                  style={{
+                    backgroundColor: "#0E0C0A",
+                    transformOrigin: "top center",
+                    boxShadow: "0 25px 80px rgba(0,0,0,0.98), 0 0 0 1px rgba(212,175,55,0.3)",
+                  }}
                 >
-                  {/* Top Ambient Gold Sheen */}
-                  <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-transparent via-champagne to-transparent pointer-events-none" />
+                  {/* Top Glowing Gold Ingot Accent Line */}
+                  <div className="w-full h-[2.5px] bg-gradient-to-r from-transparent via-champagne to-transparent" />
 
                   {/* Header Bar */}
-                  <div className="flex items-center justify-between pb-3.5 mb-4 border-b border-white/10 text-xs">
+                  <div className="flex items-center justify-between px-6 py-3.5 bg-[#14110E] border-b border-champagne/20 text-xs">
                     <div className="flex items-center gap-2">
                       <Sparkles className="w-3.5 h-3.5 text-champagne animate-pulse" />
                       <span className="font-mono text-[10.5px] uppercase tracking-[0.24em] text-champagne font-semibold">
                         {effectiveLang === "ta" ? "மரத் தளவாடத் தொகுப்புகள்" : "KERALA FURNITURE • TIMBER SUITES"}
                       </span>
                     </div>
-                    <span className="text-[10px] font-mono text-sand/60 uppercase tracking-widest hidden sm:inline">
-                      {effectiveLang === "ta" ? "சங்கரன்கோவில் பட்டறைத் தயாரிப்பு" : "SANKARANKOVIL ATELIER WORKSHOP"}
+                    <span className="text-[10px] font-mono text-sand/70 uppercase tracking-widest hidden sm:inline">
+                      {effectiveLang === "ta" ? "சங்கரன்கோவில் பட்டறைத் தயாரிப்பு" : "SANKARANKOVIL DIRECT ATELIER"}
                     </span>
                   </div>
 
                   {/* Two-Column Grid: Left Categories (7 cols) + Right Spotlight Banner (5 cols) */}
-                  <div className="grid grid-cols-12 gap-5">
+                  <div className="p-5 sm:p-6 grid grid-cols-12 gap-5" style={{ backgroundColor: "#0E0C0A" }}>
                     {/* Left: Curated Suites List */}
-                    <div className="col-span-12 md:col-span-7 flex flex-col gap-1.5">
+                    <div className="col-span-12 md:col-span-7 flex flex-col gap-2">
                       {collectionLinks.map((item) => (
                         <Link
                           key={item.name}
                           href={item.href}
                           onClick={() => setCollectionsDropdownOpen(false)}
-                          className="flex items-center gap-3.5 p-2 rounded-none bg-obsidian/40 border border-white/5 hover:border-champagne/60 hover:bg-white/[0.04] transition-all duration-300 group focus-ring select-none"
+                          className="flex items-center gap-3.5 p-2.5 bg-[#151210] hover:bg-[#1E1914] border border-[#28211A] hover:border-champagne/70 transition-all duration-200 group focus-ring select-none shadow-sm"
                         >
-                          {/* High-Resolution Thumbnail with Border */}
-                          <div className="relative w-13 h-11 shrink-0 overflow-hidden border border-white/15 group-hover:border-champagne transition-colors bg-obsidian">
+                          {/* High-Resolution Thumbnail with Gold Border */}
+                          <div className="relative w-14 h-12 shrink-0 overflow-hidden border border-champagne/30 group-hover:border-champagne transition-colors bg-[#0A0908]">
                             <Image
                               src={item.image}
                               alt={item.name}
                               fill
-                              sizes="56px"
-                              className="object-cover object-center group-hover:scale-110 transition-transform duration-500"
+                              sizes="64px"
+                              className="object-cover object-center group-hover:scale-108 transition-transform duration-500"
                             />
                           </div>
 
                           {/* Text Info */}
                           <div className="flex flex-col flex-1 min-w-0">
                             <div className="flex items-center justify-between gap-1.5">
-                              <span className="text-xs font-serif font-medium text-white group-hover:text-champagne transition-colors truncate">
+                              <span className="text-xs sm:text-[13px] font-serif font-semibold text-white group-hover:text-champagne transition-colors whitespace-nowrap">
                                 {effectiveLang === "ta" ? item.tamilName : item.name}
                               </span>
                               {item.tag && (
-                                <span className="text-[9px] font-mono uppercase px-1.5 py-0.2 bg-champagne/15 text-champagne border border-champagne/30 shrink-0">
+                                <span className="text-[9px] font-mono uppercase px-2 py-0.5 bg-champagne/15 text-champagne border border-champagne/35 font-medium shrink-0">
                                   {item.tag}
                                 </span>
                               )}
                             </div>
-                            <span className="text-[10.5px] text-sand/65 font-sans leading-tight truncate mt-0.5">
+                            <span className="text-[10.5px] text-sand/75 font-sans leading-tight truncate mt-0.5">
                               {item.desc}
                             </span>
                           </div>
@@ -299,45 +303,45 @@ export const Navbar: React.FC<NavbarProps> = ({
                     </div>
 
                     {/* Right: Bespoke Custom Furniture Spotlight Card */}
-                    <div className="col-span-12 md:col-span-5 flex flex-col justify-between p-4 bg-obsidian/90 border border-champagne/40 relative overflow-hidden group/card shadow-subtle">
-                      {/* Background Visual Texture with Subtle Opacity */}
+                    <div className="col-span-12 md:col-span-5 flex flex-col justify-between p-4.5 bg-[#14110E] border border-champagne/45 relative overflow-hidden group/card shadow-luxury">
+                      {/* Background Visual Texture with Rich Deep Tone */}
                       <div className="absolute inset-0 z-0">
                         <Image
                           src="/images/thekku/thekku-sofa-set.jpg"
                           alt="Custom Teakwood Furniture Craftsmanship"
                           fill
-                          sizes="280px"
-                          className="object-cover object-center opacity-30 group-hover/card:scale-105 transition-transform duration-700"
+                          sizes="300px"
+                          className="object-cover object-center opacity-35 group-hover/card:scale-105 transition-transform duration-700"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/85 to-obsidian/40" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0E0C0A] via-[#0E0C0A]/85 to-[#0E0C0A]/40" />
                       </div>
 
                       {/* Content */}
                       <div className="relative z-10 flex flex-col gap-2">
-                        <span className="inline-flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-[0.2em] text-champagne">
+                        <span className="inline-flex items-center gap-1.5 text-[9.5px] font-mono uppercase tracking-[0.2em] text-champagne font-semibold">
                           <TreePine className="w-3 h-3 text-champagne" />
                           <span>{effectiveLang === "ta" ? "100% தேக்கு மரம்" : "100% SOLID THEKKU"}</span>
                         </span>
 
-                        <h4 className="font-serif text-sm sm:text-base text-white font-medium leading-snug group-hover/card:text-champagne transition-colors">
+                        <h4 className="font-serif text-sm sm:text-base text-white font-semibold leading-snug group-hover/card:text-champagne transition-colors">
                           {effectiveLang === "ta"
                             ? "பிரத்யேக அளவுகளில் தனிப்பயன் மரவேலை"
                             : "Bespoke Architectural Furniture Tailoring"}
                         </h4>
 
-                        <p className="text-[10.5px] text-sand/80 font-sans leading-relaxed">
+                        <p className="text-[11px] text-sand/85 font-sans leading-relaxed">
                           {effectiveLang === "ta"
                             ? "உங்கள் இல்லத்தின் வரைபடத்திற்கேற்ப உயர்தர முதிர்ந்த தேக்கு மரத்தில் பிரத்யேகமாக வடிவமைத்துத் தருகிறோம்."
-                            : "Have a specific room blueprint? Our master woodcarvers handcraft bespoke suites tailored to your dimensions."}
+                            : "Have custom room blueprints or Chettinad heritage dimensions? Our master woodcarvers handcraft bespoke suites tailored to your living space."}
                         </p>
                       </div>
 
                       {/* Actions */}
-                      <div className="relative z-10 pt-3 mt-2 border-t border-white/10 flex flex-col gap-2">
+                      <div className="relative z-10 pt-3.5 mt-3 border-t border-champagne/25 flex flex-col gap-2.5">
                         <Link
                           href="/#bespoke"
                           onClick={() => setCollectionsDropdownOpen(false)}
-                          className="inline-flex items-center justify-between px-3 py-2 bg-champagne text-obsidian text-[10.5px] font-mono uppercase font-semibold tracking-wider hover:bg-champagne-light transition-all shadow-subtle cursor-pointer"
+                          className="inline-flex items-center justify-between px-3.5 py-2.5 bg-champagne text-obsidian text-[11px] font-mono uppercase font-bold tracking-wider hover:bg-champagne-light transition-all shadow-gold cursor-pointer"
                         >
                           <span>{effectiveLang === "ta" ? "வடிவமைப்பைத் தொடங்குக" : "START BESPOKE ORDER"}</span>
                           <ArrowRight className="w-3.5 h-3.5" />
@@ -345,7 +349,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
                         <a
                           href="tel:+917902779356"
-                          className="inline-flex items-center justify-center gap-1.5 py-0.5 text-[10px] font-mono text-sand/70 hover:text-champagne transition-colors"
+                          className="inline-flex items-center justify-center gap-1.5 py-1 text-[10.5px] font-mono text-sand/80 hover:text-champagne transition-colors"
                         >
                           <Phone className="w-3 h-3 text-champagne" />
                           <span>{effectiveLang === "ta" ? "பட்டறை அழைப்பு: 79027 79356" : "Atelier Hotline: 79027 79356"}</span>
@@ -354,19 +358,19 @@ export const Navbar: React.FC<NavbarProps> = ({
                     </div>
                   </div>
 
-                  {/* Bottom Atelier Guarantees Bar */}
-                  <div className="mt-4 pt-3 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 text-[10px] font-mono text-sand/75">
-                    <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-champagne" />
+                  {/* Bottom Atelier Guarantees Bar (100% Solid Contrast Strip) */}
+                  <div className="px-6 py-2.5 bg-[#0A0807] border-t border-champagne/20 flex items-center justify-between gap-2 text-[9.5px] sm:text-[10px] font-mono text-sand/85">
+                    <div className="flex items-center gap-1.5 shrink-0">
+                      <span className="w-1.5 h-1.5 rounded-full bg-champagne shrink-0" />
                       <span>{effectiveLang === "ta" ? "தமிழ்நாடு முதிர்ந்த தேக்குமரம்" : "Authentic Seasoned TN Teak"}</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-champagne" />
+                    <div className="flex items-center gap-1.5 shrink-0">
+                      <span className="w-1.5 h-1.5 rounded-full bg-champagne shrink-0" />
                       <span>{effectiveLang === "ta" ? "பாரம்பரிய மர இணைப்பு" : "Tenon-and-Mortise Joinery"}</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-champagne" />
-                      <span>{effectiveLang === "ta" ? "சங்கரன்கோவில் ஷோரூம்" : "Sankarankovil Direct Atelier"}</span>
+                    <div className="flex items-center gap-1.5 shrink-0">
+                      <span className="w-1.5 h-1.5 rounded-full bg-champagne shrink-0" />
+                      <span>{effectiveLang === "ta" ? "சங்கரன்கோவில் ஷோரூம்" : "Direct Sankarankovil Atelier"}</span>
                     </div>
                   </div>
                 </div>
