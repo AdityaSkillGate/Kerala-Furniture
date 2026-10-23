@@ -11,7 +11,6 @@ import {
   Menu,
   X,
   ChevronDown,
-  Heart,
   Sofa,
   Bed,
   Utensils,
@@ -24,7 +23,6 @@ import {
 import { BRAND_CONFIG, getWhatsAppInquiryUrl } from "@/data/brand";
 import { TRANSLATIONS, SupportedLanguage } from "@/data/translations";
 import { useLanguage } from "@/lib/language-context";
-import { useShop } from "@/lib/shop-context";
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/ui/Logo";
 
@@ -50,9 +48,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [collectionsDropdownOpen, setCollectionsDropdownOpen] = useState(false);
-  const [callUsDropdownOpen, setCallUsDropdownOpen] = useState(false);
-
-  const { wishlist, setIsWishlistOpen } = useShop();
 
   // 1. GSAP ScrollTrigger for Frosted-Glass & Seamless Padding Shrink
   useEffect(() => {
@@ -98,7 +93,6 @@ export const Navbar: React.FC<NavbarProps> = ({
       if (e.key === "Escape") {
         setMobileMenuOpen(false);
         setCollectionsDropdownOpen(false);
-        setCallUsDropdownOpen(false);
       }
     };
 
@@ -407,7 +401,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </Link>
           </div>
 
-          {/* Right: Language toggle, Wishlist, Profile, Call Us, WhatsApp CTA */}
+          {/* Right: Language toggle & WhatsApp CTA */}
           <div className="flex items-center gap-2 sm:gap-3.5 shrink-0">
             {/* Language Toggle "தமிழ்" / "English" */}
             <button
@@ -419,79 +413,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               {effectiveLang === "en" ? "தமிழ்" : "English"}
             </button>
-
-            {/* Wishlist Heart Icon with Count Badge */}
-            <button
-              type="button"
-              onClick={() => setIsWishlistOpen(true)}
-              className="relative p-2 text-white/80 hover:text-champagne transition-colors focus-ring"
-              aria-label={`View wishlist (${wishlist.length} items)`}
-              title="Saved Furniture Wishlist"
-            >
-              <Heart
-                className={cn(
-                  "w-4 h-4 sm:w-4.5 sm:h-4.5",
-                  wishlist.length > 0 && "fill-rose-500 text-rose-500"
-                )}
-              />
-              {wishlist.length > 0 && (
-                <span className="absolute top-0.5 right-0.5 w-4 h-4 bg-rose-600 text-white text-[9px] font-mono font-bold rounded-full flex items-center justify-center">
-                  {wishlist.length}
-                </span>
-              )}
-            </button>
-
-
-            {/* "CALL US" Block */}
-            <div
-              className="relative hidden md:block"
-              onMouseEnter={() => setCallUsDropdownOpen(true)}
-              onMouseLeave={() => setCallUsDropdownOpen(false)}
-            >
-              <a
-                href="tel:+917902779356"
-                className="flex items-center gap-2 px-3 py-1.5 bg-obsidian border border-white/15 hover:border-champagne text-white text-xs font-mono transition-all group focus-ring"
-                title="Call Kerala Furniture Showroom"
-              >
-                <Phone className="w-3.5 h-3.5 text-champagne shrink-0" />
-                <div className="flex flex-col text-left leading-none">
-                  <span className="text-[9px] text-sand/60 uppercase font-mono">CALL US</span>
-                  <span className="text-[11px] font-semibold text-white group-hover:text-champagne mt-0.5">
-                    79027 79356
-                  </span>
-                </div>
-              </a>
-
-              {/* Call Us Multi-Desk Flyout */}
-              {callUsDropdownOpen && (
-                <div className="absolute top-full right-0 mt-2 w-56 bg-charcoal/95 backdrop-blur-xl border border-champagne/40 p-2.5 shadow-luxury animate-in fade-in duration-150 z-50">
-                  <span className="text-[9px] uppercase font-mono tracking-widest text-sand/60 block px-2 py-1 border-b border-white/10 mb-1">
-                    Showroom Desk Lines
-                  </span>
-                  <a
-                    href="tel:+917902779356"
-                    className="flex items-center justify-between p-2 hover:bg-white/5 text-xs text-white font-mono hover:text-champagne transition-colors"
-                  >
-                    <span>Desk Line 1</span>
-                    <span className="font-semibold">79027 79356</span>
-                  </a>
-                  <a
-                    href="tel:+917034756478"
-                    className="flex items-center justify-between p-2 hover:bg-white/5 text-xs text-white font-mono hover:text-champagne transition-colors"
-                  >
-                    <span>Desk Line 2</span>
-                    <span className="font-semibold">70347 56478</span>
-                  </a>
-                  <a
-                    href="tel:+919072198315"
-                    className="flex items-center justify-between p-2 hover:bg-white/5 text-xs text-white font-mono hover:text-champagne transition-colors"
-                  >
-                    <span>Desk Line 3</span>
-                    <span className="font-semibold">90721 98315</span>
-                  </a>
-                </div>
-              )}
-            </div>
 
             {/* Prominent Gold-Bordered "INQUIRE ON WHATSAPP" Primary CTA Button */}
             <a
